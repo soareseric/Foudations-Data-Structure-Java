@@ -29,8 +29,11 @@ public class Main {
 
 	private static void fazerVetores() {
 		// indice sempre começa por 0
-		Vetor vetorPessoas = new Vetor(3);
+		Vetor<Pessoa> vetorPessoas = new Vetor<Pessoa>(3);
 		vetorPessoas.inserirEm(0, new Pessoa(1, "Pessoa1"));
 		System.out.println(vetorPessoas.recuperar(0).getName());
+		Vetor<Integer> vetorInteiro = new Vetor<Integer>(2);
+		vetorInteiro.inserirEm(0, 1);
+		System.out.println(vetorInteiro.recuperar(0));
 	}
 }

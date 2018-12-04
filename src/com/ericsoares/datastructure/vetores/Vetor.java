@@ -1,20 +1,20 @@
 package com.ericsoares.datastructure.vetores;
 
-import com.ericsoares.datastructure.domain.Pessoa;
+// O <T> É UM PARAMETRO GENERICO
+public class Vetor<T> {
 
-public class Vetor {
-
-	private Pessoa[] pessoas;
+	private Object[] elementos;
 	
 	public Vetor(int capacidade) {
-		this.pessoas = new Pessoa[capacidade];
+		this.elementos = new Object[capacidade];
 	}
 	
-	public void inserirEm(int posicao, Pessoa pessoa) {
-		this.pessoas[posicao] = pessoa;	
+	public void inserirEm(int posicao, T elemento) {
+		this.elementos[posicao] = elemento;	
 	}
 	
-	public Pessoa recuperar(int posicao) {
-		return this.pessoas[posicao];
+	@SuppressWarnings("unchecked")
+	public T recuperar(int posicao) {
+		return (T)this.elementos[posicao]; // CASTING 
 	}
 }
