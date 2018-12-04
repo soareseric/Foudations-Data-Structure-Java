@@ -32,7 +32,7 @@ public class Main {
 		Vetor<Pessoa> vetorPessoas = new Vetor<Pessoa>(3);
 		vetorPessoas.inserirEm(0, new Pessoa(1, "Pessoa1"));
 		System.out.println(vetorPessoas.recuperar(0).getName());
-		Vetor<Integer> vetorInteiro = new Vetor<Integer>(2);
+		Vetor<Integer> vetorInteiro = new Vetor<Integer>(2); // INTERNAMENTE A JVM ESTA FAZENDO ' CASTINGS ' EM CADA DECLARAÇÃO DO TIPO DA CLASSE VETOR. NÃO PODE SER USADO TIPOS PRIMITIVOS, APENAS WRAPPERS
 		vetorInteiro.inserirEm(0, 1);
 		System.out.println(vetorInteiro.recuperar(0));
 	}
