@@ -27,7 +27,7 @@ public class Main {
 		System.out.println("Será criado em breve...");
 	}
 
-	private static void fazerVetores() {
+	private static void fazerVetores() {	
 		// indice sempre começa por 0
 		Vetor<Pessoa> vetorPessoas = new Vetor<Pessoa>();
 		vetorPessoas.inserir(new Pessoa(1, "Pessoa 1"));
@@ -40,5 +40,11 @@ public class Main {
 		for (int i = 0; i < vetorPessoas.tamanho(); i++) {
 			System.out.println(vetorPessoas.recuperar(i).getName());
 		}
+		Pessoa p = vetorPessoas.recuperar(1);
+		Pessoa pessoaErrada = new Pessoa(100, "Pessoa 100");
+		System.out.println(vetorPessoas.contem(p));
+		System.out.println(vetorPessoas.contem(pessoaErrada));
+		System.out.println(vetorPessoas.indice(p));
+		System.out.println(vetorPessoas.indice(pessoaErrada));
 	}
 }
