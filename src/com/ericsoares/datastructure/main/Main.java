@@ -3,6 +3,7 @@ package com.ericsoares.datastructure.main;
 import java.util.Scanner;
 
 import com.ericsoares.datastructure.domain.Pessoa;
+import com.ericsoares.datastructure.vetores.Vetor;
 
 public class Main {
 
@@ -28,11 +29,8 @@ public class Main {
 
 	private static void fazerVetores() {
 		// indice sempre começa por 0
-		Pessoa[] vetorPessoas = new Pessoa[3];
-		vetorPessoas[0] = new Pessoa(1, "Pessoa 1");
-		System.out.println(vetorPessoas[0].getName());
-		// System.out.println(vetorPessoas[1].getName()); // Irá dar um Null Point exception, devido a ser um reference type
-		int[] vetorInteiro = new int[3];
-		System.out.println(vetorInteiro[0]); // Já esse vetor irá dar certo, devido a ser um valueType
+		Vetor vetorPessoas = new Vetor(3);
+		vetorPessoas.inserirEm(0, new Pessoa(1, "Pessoa1"));
+		System.out.println(vetorPessoas.recuperar(0).getName());
 	}
 }
