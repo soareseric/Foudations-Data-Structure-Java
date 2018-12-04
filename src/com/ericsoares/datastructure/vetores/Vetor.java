@@ -54,9 +54,16 @@ public class Vetor<T> {
 	
 	@SuppressWarnings("unchecked")  	// ANNOTATION PARA SUPRIMIR UM WARNING
 	public T recuperar(int posicao) {
+		if (posicao >= tamanho()) {
+			throw new IllegalArgumentException(String.format("Posição inválida {%d}", posicao));
+		}
 		return (T)this.elementos[posicao]; // CASTING DA CLASSE OBJECT PARA T(GENERICO)
 	}
 
+	public int tamanho() {
+		return this.elementos.length;
+	}
+	
 	@Override
 	public String toString() {
 		return "Vetor [elementos=" + Arrays.toString(elementos) + "]";

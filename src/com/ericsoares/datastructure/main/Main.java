@@ -36,5 +36,9 @@ public class Main {
 		vetorPessoas.inserir(new Pessoa(4, "Pessoa 4"));
 		vetorPessoas.inserirEm(1, new Pessoa(5, "Pessoa 5"));;
 		System.out.println(vetorPessoas.toString());
+		System.out.println("Lista de pessoas: ");
+		for (int i = 0; i < vetorPessoas.tamanho(); i++) {
+			System.out.println(vetorPessoas.recuperar(i).getName());
+		}
 	}
 }
