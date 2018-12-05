@@ -1,32 +1,32 @@
 package com.ericsoares.datastructure.listasligadas;
 
 public class ListaLigada<T> {
-	
+
 	private No<T> primeiroNo;
 	private No<T> ultimoNo;
 	private int tamanho;
-	
+
 	public ListaLigada() {
 		this.primeiroNo = null;
-		this.ultimoNo = null;	
+		this.ultimoNo = null;
 		this.tamanho = 0;
 	}
-	
+
 	public void inserirEm(int posicao, T elemento) {
 		if (posicao >= tamanho) {
 			throw new IllegalArgumentException(String.format("Posição inválida [%d]", posicao));
 		}
-		
+
 		if (posicao == 0) {
 			No<T> novoNo = new No<T>(elemento);
 			novoNo.setProximo(this.primeiroNo);
 			this.primeiroNo = novoNo;
-			
-		} else if (posicao == this.tamanho() -1 ) {
+
+		} else if (posicao == this.tamanho() - 1) {
 			No<T> novoNo = new No<T>(elemento);
 			this.ultimoNo.setProximo(novoNo);
 			this.ultimoNo = novoNo;
-			
+
 		} else {
 			No<T> noAnterior = recuperarNo(posicao - 1);
 			No<T> noAtual = recuperarNo(posicao);
@@ -36,15 +36,15 @@ public class ListaLigada<T> {
 		}
 		this.tamanho++;
 	}
-	
+
 	public void inserirPrimeiro(T elemento) {
 		inserirEm(0, elemento);
 	}
-	
+
 	public void inserirUltimo(T elemento) {
 		inserirEm(tamanho - 1, elemento);
 	}
-	
+
 	public T recuperar(int posicao) {
 		No<T> no = recuperarNo(posicao);
 		if (no != null) {
@@ -52,7 +52,7 @@ public class ListaLigada<T> {
 		}
 		return null;
 	}
-	
+
 	private No<T> recuperarNo(int posicao) {
 		if (posicao >= tamanho()) {
 			throw new IllegalArgumentException(String.format("Posição inválida [%d]", posicao));
@@ -65,9 +65,9 @@ public class ListaLigada<T> {
 				resultado = resultado.getProximo();
 			}
 		}
-			return resultado;
+		return resultado;
 	}
-	
+
 	public void inserir(T elemento) {
 		No<T> novoNo = new No<T>(elemento);
 		if (estaVazia()) {
@@ -79,15 +79,15 @@ public class ListaLigada<T> {
 		}
 		this.tamanho++;
 	}
-	
+
 	public boolean estaVazia() {
-		return this.tamanho	== 0;	
+		return this.tamanho == 0;
 	}
-	
+
 	public int tamanho() {
 		return this.tamanho;
 	}
-	
+
 	public boolean contem(T elemento) {
 		for (int i = 0; i < tamanho(); i++) {
 			No<T> noATual = recuperarNo(i);
@@ -97,7 +97,7 @@ public class ListaLigada<T> {
 		}
 		return false;
 	}
-	
+
 	public int indice(T elemento) {
 		for (int i = 0; i < tamanho(); i++) {
 			No<T> noAtual = recuperarNo(i);
@@ -108,6 +108,39 @@ public class ListaLigada<T> {
 		return -1;
 	}
 
+	public void remover(int posicao) {
+		if (posicao >= tamanho()) {
+			throw new IllegalArgumentException(String.format("Posição inválida [%d]", posicao));
+		}
+		
+		if (posicao == 0) {
+			No<T> proximoNo = this.primeiroNo.getProximo();
+			this.primeiroNo.setProximo(null);
+			this.primeiroNo = proximoNo;
+		
+		} else if (posicao == tamanho() - 1) {
+			No<T> penultimoNo = recuperarNo(tamanho() - 2);
+			penultimoNo.setProximo(null);
+			this.ultimoNo = penultimoNo;
+		
+		} else {
+			No<T> noAnterior = recuperarNo(posicao - 1);
+			No<T> proximoNo = recuperarNo(posicao + 1);
+			No<T> noAtual = recuperarNo(posicao);
+			noAnterior.setProximo(proximoNo);
+			noAtual.setProximo(null);
+		}
+		this.tamanho--;
+	}
+
+	public void remover(T elemento) {
+		int indice = indice(elemento);
+		if (indice == -1) {
+			throw new IllegalArgumentException(String.format("Elemento inválido - " + elemento.toString()));	
+		}
+		remover(indice);
+	}
+
 	@Override
 	public String toString() {
 		if (estaVazia()) {
@@ -116,10 +149,11 @@ public class ListaLigada<T> {
 			No<T> noAtual = this.primeiroNo;
 			StringBuilder sb = new StringBuilder();
 			sb.append("Lista [");
-			sb.append(noAtual.getElemento() != null ? noAtual.getElemento().toString() : "<NULO>");	
+			sb.append(noAtual.getElemento() != null ? noAtual.getElemento().toString() : "<NULO>");
 			sb.append(",");
 			while (noAtual.getProximo() != null) {
-				sb.append(noAtual.getProximo().getElemento() != null ? noAtual.getProximo().getElemento().toString() : "<NULO>");
+				sb.append(noAtual.getProximo().getElemento() != null ? noAtual.getProximo().getElemento().toString()
+						: "<NULO>");
 				sb.append(",");
 				noAtual = noAtual.getProximo();
 			}
@@ -127,5 +161,5 @@ public class ListaLigada<T> {
 			return sb.toString();
 		}
 	}
-	
+
 }
