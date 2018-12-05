@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.ericsoares.datastructure.domain.Pessoa;
 import com.ericsoares.datastructure.listasligadas.ListaDuplamenteLigada;
 import com.ericsoares.datastructure.listasligadas.ListaLigada;
+import com.ericsoares.datastructure.pilhas.Pilha;
 import com.ericsoares.datastructure.vetores.Vetor;
 
 public class Main {
@@ -20,16 +21,28 @@ public class Main {
 		System.out.println("2. Vetores");
 		System.out.println("3. Lista Ligada");
 		System.out.println("4. Lista duplamente ligada");
+		System.out.println("5. Pilhas");
 		int opcao = sc.nextInt();
 		switch (opcao) {
 		case 1: fazerGerenciamentoMemoria(); break;
 		case 2: fazerVetores(); break;
 		case 3: fazerListaLigada(); break;
 		case 4: fazerListasDuplamenteLigadas(); break;
+		case 5: fazerPilhas(); break;
 		default: System.out.println("Escolha somente uma das opções acima!"); break;
 
 		}
 		sc.close();
+	}
+
+	private static void fazerPilhas() {
+		Pilha<Pessoa> pilhaPessoas = new Pilha<Pessoa>();
+		System.out.println(pilhaPessoas.estaVazia());
+		pilhaPessoas.empilhar(new Pessoa(1, "Pessoa 1"));
+		pilhaPessoas.empilhar(new Pessoa(2, "Pessoa 2"));
+		pilhaPessoas.empilhar(new Pessoa(3, "Pessoa 3"));
+		Pessoa p1 = pilhaPessoas.desempilhar();
+		System.out.println(p1.toString());
 	}
 
 	private static void fazerListasDuplamenteLigadas() {

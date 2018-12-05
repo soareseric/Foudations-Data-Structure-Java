@@ -14,7 +14,16 @@ public class Pilha<T> {
 		return this.elementos.estaVazia();
 	}
 	
-	public void impilhar(T elemento) {
+	public void empilhar(T elemento) {
 		this.elementos.inserir(elemento);
+	}
+	
+	public T desempilhar() {
+		if (estaVazia()) {
+			return null;
+		}
+		T resultado = this.elementos.recuperar(this.elementos.tamanho() - 1);
+		this.elementos.remover(this.elementos.tamanho() - 1);
+		return resultado;
 	}
 }
