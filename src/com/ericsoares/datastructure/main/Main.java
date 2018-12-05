@@ -31,6 +31,9 @@ public class Main {
 		listaPessoa.inserir(new Pessoa(1, "Pessoa 1"));
 		listaPessoa.inserir(new Pessoa(2, "Pessoa 2"));
 		listaPessoa.inserir(new Pessoa(3, "Pessoa 3"));
+		listaPessoa.inserirEm(1, new Pessoa(4, "Pessoa 4"));
+		listaPessoa.inserirPrimeiro(new Pessoa(5, "Pessoa 5"));
+		listaPessoa.inserirUltimo(new Pessoa(6, "Pessoa 6"));
 		System.out.println(listaPessoa.toString());
 	}
 
