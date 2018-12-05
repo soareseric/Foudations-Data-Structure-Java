@@ -11,6 +11,9 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
+		//OBS: VETORES : VECTOR E ARRAYLIST
+		//OBS: LISTAS LIGADAS: LINKEDLIST
+		
 		System.out.println("Digite a opção desejada");
 		System.out.println("1. Gerenciamento de memoria");
 		System.out.println("2. Vetores");

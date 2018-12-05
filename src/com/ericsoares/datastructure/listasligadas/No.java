@@ -1,6 +1,6 @@
 package com.ericsoares.datastructure.listasligadas;
 
-public class No<T> {
+class No<T> {
 
 	private T elemento;
 	private No<T> proximo;
