@@ -11,15 +11,20 @@ public class Fila<T> {
 	}
 	
 	public void enfileirar(T elemento) {
-		
+		this.elementos.inserir(elemento);
 	}
 	
 	public T desemfileirar() {
-		
+		if (estaVazia()) {
+			return null;
+		}
+		T resultado = this.elementos.recuperar(0);
+		this.elementos.remover(0);
+		return resultado;
 	}
 	
 	public boolean estaVazia() {
-		
+		return this.elementos.estaVazia();
 	}
 	
 	
