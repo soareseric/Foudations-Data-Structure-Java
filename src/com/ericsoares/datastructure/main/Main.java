@@ -14,7 +14,8 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 
 		//OBS: VETORES : VECTOR E ARRAYLIST
-		//OBS: LISTAS LIGADAS: LINKEDLIST
+		//OBS: LISTAS LIGADAS E DUPLAMENTE LIGADAS : LINKEDLIST
+		//OBS: PILHAS : STACK ( HERDA OS CONCEITOS DE LISTAS LIGADAS E DUPLAMENTE LIGADAS )
 		
 		System.out.println("Digite a opção desejada");
 		System.out.println("1. Gerenciamento de memoria");
