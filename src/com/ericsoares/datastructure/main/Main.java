@@ -3,6 +3,7 @@ package com.ericsoares.datastructure.main;
 import java.util.Scanner;
 
 import com.ericsoares.datastructure.domain.Pessoa;
+import com.ericsoares.datastructure.listasligadas.ListaDuplamenteLigada;
 import com.ericsoares.datastructure.listasligadas.ListaLigada;
 import com.ericsoares.datastructure.vetores.Vetor;
 
@@ -18,15 +19,42 @@ public class Main {
 		System.out.println("1. Gerenciamento de memoria");
 		System.out.println("2. Vetores");
 		System.out.println("3. Lista Ligada");
+		System.out.println("4. Lista duplamente ligada");
 		int opcao = sc.nextInt();
 		switch (opcao) {
 		case 1: fazerGerenciamentoMemoria(); break;
 		case 2: fazerVetores(); break;
 		case 3: fazerListaLigada(); break;
+		case 4: fazerListasDuplamenteLigadas(); break;
 		default: System.out.println("Escolha somente uma das opções acima!"); break;
 
 		}
 		sc.close();
+	}
+
+	private static void fazerListasDuplamenteLigadas() {
+		ListaDuplamenteLigada<Pessoa> listaPessoa = new ListaDuplamenteLigada<Pessoa>();
+		listaPessoa.inserir(new Pessoa(1, "Pessoa 1"));
+		listaPessoa.inserir(new Pessoa(2, "Pessoa 2"));
+		listaPessoa.inserir(new Pessoa(3, "Pessoa 3"));
+		listaPessoa.inserirEm(1, new Pessoa(4, "Pessoa 4"));
+		listaPessoa.inserirPrimeiro(new Pessoa(5, "Pessoa 5"));
+		listaPessoa.inserirUltimo(new Pessoa(6, "Pessoa 6"));
+		System.out.println(listaPessoa.toString());
+		Pessoa p = listaPessoa.recuperar(1);
+		Pessoa pessoaErrada = new Pessoa(100, "Pessoa 100");
+		System.out.println(listaPessoa.contem(p));
+		System.out.println(listaPessoa.contem(pessoaErrada));
+		System.out.println(listaPessoa.indice(p));
+		System.out.println(listaPessoa.indice(pessoaErrada));
+		listaPessoa.remover(0);
+		System.out.println(listaPessoa.toString());
+		listaPessoa.remover(p);
+		System.out.println(listaPessoa.toString());
+		System.out.println("Lista de pessoas");
+		for(int i = 0; i < listaPessoa.tamanho(); i++) {
+			System.out.println(listaPessoa.recuperar(i).toString());
+		}
 	}
 
 	private static void fazerListaLigada() {
