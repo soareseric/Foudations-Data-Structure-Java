@@ -3,6 +3,7 @@ package com.ericsoares.datastructure.main;
 import java.util.Scanner;
 
 import com.ericsoares.datastructure.domain.Pessoa;
+import com.ericsoares.datastructure.listasligadas.ListaLigada;
 import com.ericsoares.datastructure.vetores.Vetor;
 
 public class Main {
@@ -13,14 +14,24 @@ public class Main {
 		System.out.println("Digite a opção desejada");
 		System.out.println("1. Gerenciamento de memoria");
 		System.out.println("2. Vetores");
+		System.out.println("3. Lista Ligada");
 		int opcao = sc.nextInt();
 		switch (opcao) {
 		case 1: fazerGerenciamentoMemoria(); break;
 		case 2: fazerVetores(); break;
+		case 3: fazerListaLigada(); break;
 		default: System.out.println("Escolha somente uma das opções acima!"); break;
 
 		}
 		sc.close();
+	}
+
+	private static void fazerListaLigada() {
+		ListaLigada<Pessoa> listaPessoa = new ListaLigada<Pessoa>();
+		listaPessoa.inserir(new Pessoa(1, "Pessoa 1"));
+		listaPessoa.inserir(new Pessoa(2, "Pessoa 2"));
+		listaPessoa.inserir(new Pessoa(3, "Pessoa 3"));
+		System.out.println(listaPessoa.toString());
 	}
 
 	private static void fazerGerenciamentoMemoria() {

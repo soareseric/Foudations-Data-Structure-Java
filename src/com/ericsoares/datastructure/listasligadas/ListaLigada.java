@@ -37,14 +37,18 @@ public class ListaLigada<T> {
 		if (estaVazia()) {
 			return "ListaLigada []";
 		} else {
-			No<T> noInicial = this.primeiroNo;
+			No<T> noAtual = this.primeiroNo;
 			StringBuilder sb = new StringBuilder();
 			sb.append("Lista [");
-			sb.append(noInicial.getElemento() != null ? noInicial.getElemento().toString() : "<NULO>");	
+			sb.append(noAtual.getElemento() != null ? noAtual.getElemento().toString() : "<NULO>");	
 			sb.append(",");
-			while (noInicial.getElemento() != null) {
-				sb.append(noInicial.getProximo().getElemento());
+			while (noAtual.getProximo() != null) {
+				sb.append(noAtual.getProximo().getElemento() != null ? noAtual.getProximo().getElemento().toString() : "<NULO>");
+				sb.append(",");
+				noAtual = noAtual.getProximo();
 			}
+			sb.append("]");
+			return sb.toString();
 		}
 	}
 	
