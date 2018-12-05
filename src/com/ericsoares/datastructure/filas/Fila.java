@@ -26,6 +26,11 @@ public class Fila<T> {
 	public boolean estaVazia() {
 		return this.elementos.estaVazia();
 	}
+
+	@Override
+	public String toString() {
+		return "Fila [" + elementos + "]";
+	}	
 	
 	
 }

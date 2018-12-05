@@ -3,6 +3,7 @@ package com.ericsoares.datastructure.main;
 import java.util.Scanner;
 
 import com.ericsoares.datastructure.domain.Pessoa;
+import com.ericsoares.datastructure.filas.Fila;
 import com.ericsoares.datastructure.listasligadas.ListaDuplamenteLigada;
 import com.ericsoares.datastructure.listasligadas.ListaLigada;
 import com.ericsoares.datastructure.pilhas.Pilha;
@@ -23,6 +24,7 @@ public class Main {
 		System.out.println("3. Lista Ligada");
 		System.out.println("4. Lista duplamente ligada");
 		System.out.println("5. Pilhas");
+		System.out.println("6. Filas");
 		int opcao = sc.nextInt();
 		switch (opcao) {
 		case 1: fazerGerenciamentoMemoria(); break;
@@ -30,10 +32,22 @@ public class Main {
 		case 3: fazerListaLigada(); break;
 		case 4: fazerListasDuplamenteLigadas(); break;
 		case 5: fazerPilhas(); break;
+		case 6: fazerFilas(); break;
 		default: System.out.println("Escolha somente uma das opções acima!"); break;
 
 		}
 		sc.close();
+	}
+
+	private static void fazerFilas() {
+		Fila<Pessoa> filaPessoas = new Fila<Pessoa>();
+		System.out.println(filaPessoas.estaVazia());
+		filaPessoas.enfileirar(new Pessoa(1, "Pessoa 1"));
+		filaPessoas.enfileirar(new Pessoa(2, "Pessoa 2"));
+		System.out.println(filaPessoas.toString());
+		Pessoa p = filaPessoas.desemfileirar();
+		System.out.println(p.toString());
+		System.out.println(filaPessoas.toString());
 	}
 
 	private static void fazerPilhas() {
