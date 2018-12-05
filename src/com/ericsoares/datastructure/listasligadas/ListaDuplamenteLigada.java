@@ -12,6 +12,19 @@ public class ListaDuplamenteLigada<T> {
 		this.tamanho = 0;
 	}
 
+	public void inserir(T elemento) {
+		No<T> novoNo = new No<T>(elemento);
+		if (estaVazia()) {
+			this.primeiroNo = novoNo;
+			this.ultimoNo = novoNo;
+		} else {
+			this.ultimoNo.setProximo(novoNo);
+			novoNo.setAnterior(this.ultimoNo);
+			this.ultimoNo = novoNo;
+		}
+		this.tamanho++;
+	}
+	
 	public void inserirEm(int posicao, T elemento) {
 		if (posicao >= tamanho) {
 			throw new IllegalArgumentException(String.format("Posição inválida [%d]", posicao));
@@ -20,11 +33,13 @@ public class ListaDuplamenteLigada<T> {
 		if (posicao == 0) {
 			No<T> novoNo = new No<T>(elemento);
 			novoNo.setProximo(this.primeiroNo);
+			this.primeiroNo.setAnterior(novoNo);
 			this.primeiroNo = novoNo;
 
 		} else if (posicao == this.tamanho() - 1) {
 			No<T> novoNo = new No<T>(elemento);
 			this.ultimoNo.setProximo(novoNo);
+			novoNo.setAnterior(ultimoNo);
 			this.ultimoNo = novoNo;
 
 		} else {
@@ -33,6 +48,8 @@ public class ListaDuplamenteLigada<T> {
 			No<T> novoNo = new No<>(elemento);
 			noAnterior.setProximo(novoNo);
 			novoNo.setProximo(noAtual);
+			noAtual.setAnterior(novoNo);
+			novoNo.setAnterior(noAnterior);
 		}
 		this.tamanho++;
 	}
@@ -68,17 +85,6 @@ public class ListaDuplamenteLigada<T> {
 		return resultado;
 	}
 
-	public void inserir(T elemento) {
-		No<T> novoNo = new No<T>(elemento);
-		if (estaVazia()) {
-			this.primeiroNo = novoNo;
-			this.ultimoNo = novoNo;
-		} else {
-			this.ultimoNo.setProximo(novoNo);
-			this.ultimoNo = novoNo;
-		}
-		this.tamanho++;
-	}
 
 	public boolean estaVazia() {
 		return this.tamanho == 0;
